@@ -56,7 +56,7 @@ nav {
 .search__results__list__item {
 	background-color: #222;
 	padding: 10px;
-	border-radius: 5px;
+	border-radius: 8px;
 	display: grid;
 	grid-template-columns: 1fr 2fr;
 	grid-gap: 15px;
@@ -68,6 +68,12 @@ nav {
 .search__results__list__item img {
 	max-width: 100%;
 	height: auto;
+	border-radius: 8px;
+}
+
+.search__results__list__item__info {
+	display: grid;
+	grid-template-rows: auto auto 1fr;
 }
 
 .search__results__list__item__info__description {
@@ -77,24 +83,37 @@ nav {
 }
 
 .result_metadata .metadata_item {
-	margin-right: 15px;
+	margin-right: 20px;
 	text-transform: uppercase;	
+	font-weight: bold;
+	color:#aaa;
 }
 
-.result_actions {
+.media-list-item .actions {
 	display: flex;
 	gap: 10px;
+	margin-bottom: 20px;
+	align-items: flex-end;
 }
 
-.result_actions button {
-	background-color: rgb(35, 134, 57);
-	color: #fff;
-	border: none;
-	border-radius: 5px;
+.media-list-item button {
+	background-color: transparent;
+	border: 2px solid;
+	border-radius: 0px;
 	padding: 8px;
 	font-size: 13px;
 	font-weight: bold;
 	text-transform: uppercase;
+}
+
+.media-list-item button.recommend {
+	border-color: rgb(44, 226, 217);
+	color: rgb(44, 226, 217);
+}
+
+.media-list-item button.watchlist {
+	border-color: rgb(224, 46, 46);
+	color:rgb(224, 46, 46);
 }
 
 .media__backdrop {
