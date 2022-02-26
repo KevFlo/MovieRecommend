@@ -22,8 +22,8 @@ const Media = () => {
         setInWatchlist(watchlist.isInWatchlist(id, media_type));
     }, [id, media_type]);
     
-    const share_url = (id, title, type) => {
-        const data = {files: [], text: `Have you seen "${title}" yet?`, url: `https://movierecommend-d5801.web.app/${type}/${id}`, title: title};
+    const shareURL = () => {
+        const data = {files: [], text: `Have you seen "${media.title}" yet?`, url: `https://movierecommend-d5801.web.app/${media.type}/${media.id}`, title: media.title};
         if (navigator.canShare(data)) {
             navigator.share(data);
         }
@@ -51,7 +51,7 @@ const Media = () => {
                     <span className="metadata_item lang">{media.language}</span>
                 </div>
                 <div className="result_actions">
-                    <button className="btn btn-primary" onClick={() => share_url(media.id, media.title, media_type)}>Recommend</button>
+                    <button className="btn btn-primary" onClick={shareURL}>Recommend</button>
                     <button className="btn btn-primary" onClick={toggleWatchlist}>{inWatchlist ? "Remove from watchlist" : "Add to watchlist"}</button>
                 </div>
             </div>
