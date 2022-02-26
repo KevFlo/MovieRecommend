@@ -1,4 +1,4 @@
-import SearchResultItem from "./result-item";
+import MediaListItem from "../media/media-list-item";
 
 const SearchResults = ({results}) => {
 
@@ -10,7 +10,7 @@ const SearchResults = ({results}) => {
                 {
                     (relevantResults.length > 0) ? (
                         relevantResults.map(result => (
-                            <SearchResultItem key={result.id} item={result} />
+                            <MediaListItem key={result.id} item={result} />
                         ))
                     ) : (
                         <p>No results found</p>
