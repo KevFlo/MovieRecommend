@@ -39,7 +39,7 @@ const Media = () => {
     }
 
     return (
-        <div>
+        <div className="media-page">
             <img src={media.backdrop_path} alt={media.title} className="media__backdrop" />
             <div className="media__poster">
                 <img src={media.poster_path} alt={media.title} />
@@ -50,9 +50,9 @@ const Media = () => {
                     <span className="metadata_item date">{media.year}</span>
                     <span className="metadata_item lang">{media.language}</span>
                 </div>
-                <div className="result_actions">
-                    <button className="btn btn-primary" onClick={shareURL}>Recommend</button>
-                    <button className="btn btn-primary" onClick={toggleWatchlist}>{inWatchlist ? "Remove from watchlist" : "Add to watchlist"}</button>
+                <div className="actions">
+                    <button className="btn btn-primary recommend" onClick={shareURL}>Recommend</button>
+                    <button className="btn btn-primary watchlist" onClick={toggleWatchlist}>{inWatchlist ? "Remove from watchlist" : "Add to watchlist"}</button>
                 </div>
             </div>
         </div>

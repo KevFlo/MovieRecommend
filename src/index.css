@@ -82,11 +82,16 @@ nav {
 	text-overflow: ellipsis;
 }
 
-.result_metadata .metadata_item {
-	margin-right: 20px;
+.result_metadata .metadata_item,
+.media-page .metadata_item {
 	text-transform: uppercase;	
 	font-weight: bold;
 	color:#aaa;
+}
+
+.result_metadata .metadata_item:not(:last-of-type),
+.media-page .metadata_item:not(:last-of-type) {
+	margin-right: 20px;
 }
 
 .media-list-item .actions {
@@ -106,12 +111,14 @@ nav {
 	text-transform: uppercase;
 }
 
-.media-list-item button.recommend {
+.media-list-item button.recommend,
+.media-page button.recommend {
 	border-color: rgb(44, 226, 217);
 	color: rgb(44, 226, 217);
 }
 
-.media-list-item button.watchlist {
+.media-list-item button.watchlist,
+.media-page button.watchlist {
 	border-color: rgb(224, 46, 46);
 	color:rgb(224, 46, 46);
 }
@@ -130,4 +137,25 @@ nav {
 	width: auto;
 	margin-bottom: 30px;
 	border-radius: 8px;
+}
+
+.media-page .actions {
+	margin-top: 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+
+.media-page .actions button {
+	background-color: transparent;
+	border: 2px solid;
+	border-radius: 0px;
+	padding: 8px;
+	font-size: 13px;
+	font-weight: bold;
+	text-transform: uppercase;
+	display: block;
+	text-align: center;
+	width: 250px;
+	margin: 0 auto;
 }
