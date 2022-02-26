@@ -2,6 +2,10 @@
 
 Basic React App to search Movies and TV Shows to recommend to friends and family. Allows you to keep a list of all the recommendations for easy access.
 
+## Live Link
+
+Deployed on: https://movierecommend-d5801.web.app/
+
 ## Available Scripts
 
 In the project directory, you can run:
