@@ -17,7 +17,7 @@ const Media = () => {
     }, [id, media_type]);
     
     const share_url = (id, title, type) => {
-        const data = {files: [], text: `You should watch this ${type}:`, url: `https://movierecommend-d5801.web.app/${type}/${id}`, title: title};
+        const data = {files: [], text: `Have you seen "${title}" yet?`, url: `https://movierecommend-d5801.web.app/${type}/${id}`, title: title};
         if (navigator.canShare(data)) {
             navigator.share(data);
         }
