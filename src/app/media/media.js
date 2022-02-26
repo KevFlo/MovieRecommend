@@ -42,7 +42,7 @@ const Media = () => {
         <div>
             <img src={media.backdrop_path} alt={media.title} className="media__backdrop" />
             <div className="media__poster">
-                <img src={`https://image.tmdb.org/t/p/w500${media.poster_path}`} alt={media.title} />
+                <img src={media.poster_path} alt={media.title} />
             </div>
             <div className="media__info">
                 <h3 className="media__info__title">{media.title}</h3>
