@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import tmdb from "../utils/tmdb";
 import mediaUtil from "../utils/media";
+import watchlist from "../utils/watchlist";
 
 const Media = () => {
     const { id } = useParams();
     const location = useLocation();
     const media_type = location.pathname.split("/")[1];
     const [media, setMedia] = useState({});
+    const [inWatchlist, setInWatchlist] = useState(false);
 
     useEffect(() => {
         tmdb.getMedia(media_type, id).then(data => {
@@ -15,12 +17,25 @@ const Media = () => {
             setMedia(media);
         });
     }, [id, media_type]);
+
+    useEffect(() => {
+        setInWatchlist(watchlist.isInWatchlist(id, media_type));
+    }, [id, media_type]);
     
     const share_url = (id, title, type) => {
         const data = {files: [], text: `Have you seen "${title}" yet?`, url: `https://movierecommend-d5801.web.app/${type}/${id}`, title: title};
         if (navigator.canShare(data)) {
             navigator.share(data);
         }
+    }
+
+    const toggleWatchlist = () => {
+        if (inWatchlist) {
+            watchlist.removeFromWatchlist(id, media_type);
+        } else {
+            watchlist.addToWatchlist(id, media_type, media.title, media.poster_path, media.year, media.language);
+        }
+        setInWatchlist(!inWatchlist);
     }
 
     return (
@@ -37,7 +52,7 @@ const Media = () => {
                 </div>
                 <div className="result_actions">
                     <button className="btn btn-primary" onClick={() => share_url(media.id, media.title, media_type)}>Recommend</button>
-                    <button className="btn btn-primary">Add to List</button>
+                    <button className="btn btn-primary" onClick={toggleWatchlist}>{inWatchlist ? "Remove from watchlist" : "Add to watchlist"}</button>
                 </div>
             </div>
         </div>
