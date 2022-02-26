@@ -97,8 +97,18 @@ nav {
 	text-transform: uppercase;
 }
 
+.media__backdrop {
+	max-width: calc(100% + 30px);
+	margin: -45px -15px;
+	margin-bottom: -40%;
+	filter: blur(7px);
+	z-index: -1;
+	position: relative;
+}
+
 .media__poster img {
 	max-height: 300px;
 	width: auto;
 	margin-bottom: 30px;
+	border-radius: 8px;
 }
