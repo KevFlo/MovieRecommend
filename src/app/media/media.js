@@ -9,12 +9,16 @@ const Media = () => {
     const location = useLocation();
     const media_type = location.pathname.split("/")[1];
     const [media, setMedia] = useState({});
+    const [videos, setVideos] = useState([]);
     const [inWatchlist, setInWatchlist] = useState(false);
 
     useEffect(() => {
         tmdb.getMedia(media_type, id).then(data => {
             const media = mediaUtil.formatData(data, media_type);
             setMedia(media);
+        });
+        tmdb.getMediaVideos(media_type, id).then(data => {
+            setVideos(data);
         });
     }, [id, media_type]);
 
@@ -55,6 +59,16 @@ const Media = () => {
                     <button className="btn btn-primary watchlist" onClick={toggleWatchlist}>{inWatchlist ? "Remove from watchlist" : "Add to watchlist"}</button>
                 </div>
             </div>
+            {/* <div className="media-videos">
+                <h3 className="media-videos-title">Videos</h3>
+                <div className="media-videos-list">
+                    {videos.map(video => (
+                        <div className="media-videos-list-item" key={video.id}>
+                            <img src={`https://img.youtube.com/vi/${video.key}/hqdefault.jpg`} alt={video.id} />
+                        </div>
+                    ))}
+                </div>
+            </div> */}
         </div>
     )
 }

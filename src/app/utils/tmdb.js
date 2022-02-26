@@ -21,6 +21,12 @@ const tmdb = {
         const response = await fetch(`https://api.themoviedb.org/3/search/multi?api_key=${APIKey}&query=${query}`);
         const data = await response.json();
         return data.results;
+    },
+    getMediaVideos: async (type, id) => {
+        const response = await fetch(`https://api.themoviedb.org/3/${type}/${id}/videos?api_key=${APIKey}`);
+        let data = await response.json();
+        data = data.results.filter(video => video.site === "YouTube");
+        return data;
     }
 };
 
