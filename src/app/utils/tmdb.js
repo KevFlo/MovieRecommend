@@ -1,0 +1,27 @@
+const APIKey = "";
+
+const tmdb = {
+    getPopularMovies: async () => {
+        const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${APIKey}
+        `);
+        const data = await response.json();
+        return data.results;
+    },
+    getMedia: async (type, id) => {
+        const response = await fetch(`https://api.themoviedb.org/3/${type}/${id}?api_key=${APIKey}`);
+        const data = await response.json();
+        return data;
+    },
+    searchSuggestions: async (query) => {
+        const response = await fetch(`https://api.themoviedb.org/3/search/keyword?api_key=${APIKey}&query=${query}`);
+        const data = await response.json();
+        return data.results;
+    },
+    search: async (query) => {
+        const response = await fetch(`https://api.themoviedb.org/3/search/multi?api_key=${APIKey}&query=${query}`);
+        const data = await response.json();
+        return data.results;
+    }
+};
+
+export default tmdb;
