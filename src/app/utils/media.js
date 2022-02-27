@@ -19,7 +19,6 @@ const mediaUtil = {
             media.backdrop_path = `https://image.tmdb.org/t/p/w500${media.backdrop_path}`;
         }
 
-        console.log(media);
         return media;
     }
 }

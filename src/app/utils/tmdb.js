@@ -27,6 +27,12 @@ const tmdb = {
         let data = await response.json();
         data = data.results.filter(video => video.site === "YouTube");
         return data;
+    },
+    getTrendingMedia: async () => {
+        const response = await fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=${APIKey}`);
+        let data = await response.json();
+        data = await data.results.filter(media => media.media_type === "movie" || media.media_type === "tv");
+        return data;
     }
 };
 
