@@ -3,7 +3,7 @@ const mediaUtil = {
         data.media_type = media_type || data.media_type;
         const media = {
             id: data.id,
-            type: data.type || data.media_type,
+            type: data.media_type || data.type,
             title: data.title || data.name,
             poster_path: data.poster || data.poster_path || 'https://via.placeholder.com/500x750',
             backdrop_path: data.backdrop || data.backdrop_path || 'https://via.placeholder.com/500x281',
