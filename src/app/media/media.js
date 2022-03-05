@@ -9,7 +9,7 @@ const Media = () => {
     const location = useLocation();
     const media_type = location.pathname.split("/")[1];
     const [media, setMedia] = useState({});
-    const [videos, setVideos] = useState([]);
+    // const [videos, setVideos] = useState([]);
     const [inWatchlist, setInWatchlist] = useState(false);
 
     useEffect(() => {
@@ -17,9 +17,9 @@ const Media = () => {
             const media = mediaUtil.formatData(data, media_type);
             setMedia(media);
         });
-        tmdb.getMediaVideos(media_type, id).then(data => {
-            setVideos(data);
-        });
+        // tmdb.getMediaVideos(media_type, id).then(data => {
+        //     setVideos(data);
+        // });
     }, [id, media_type]);
 
     useEffect(() => {
