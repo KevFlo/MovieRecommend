@@ -23,8 +23,8 @@ const Media = () => {
     }, [id, media_type]);
 
     useEffect(() => {
-        setInWatchlist(watchlist.isInWatchlist(id, media_type));
-    }, [id, media_type]);
+        setInWatchlist(watchlist.isInWatchlist(media.id, media.type));
+    }, [media.id, media.type]);
     
     const shareURL = () => {
         const data = {files: [], text: `Have you seen "${media.title}" yet?`, url: `https://movierecommend-d5801.web.app/${media.type}/${media.id}`, title: media.title};
@@ -35,9 +35,9 @@ const Media = () => {
 
     const toggleWatchlist = () => {
         if (inWatchlist) {
-            watchlist.removeFromWatchlist(id, media_type);
+            watchlist.removeFromWatchlist(media.id, media.type);
         } else {
-            watchlist.addToWatchlist(id, media_type, media.title, media.poster_path, media.year, media.language);
+            watchlist.addToWatchlist(media.id, media.type, media.title, media.poster_path, media.year, media.language);
         }
         setInWatchlist(!inWatchlist);
     }
