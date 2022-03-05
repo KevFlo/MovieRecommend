@@ -3,6 +3,7 @@ import MediaListBlock from "../media/media-list-block";
 import tmdb from "../utils/tmdb";
 import watchlist from "../utils/watchlist";
 import Flickity from "react-flickity-component";
+import "../../flickity.css";
 
 const Dashboard = () => {
     const [mediaList, setMediaList] = useState({});
@@ -19,8 +20,8 @@ const Dashboard = () => {
         freeScroll: true,
         contain: true,
         pageDots: false,
-        prevNextButtons: false,
-    }
+        prevNextButtons: true,
+    };
 
     return (
         <div>
@@ -38,12 +39,9 @@ const Dashboard = () => {
                     </Flickity>
                     </>
                 ) : (
-                    <div>Loading...</div>
+                    <></>
                 )
             }
-            <br />
-            <br />
-            <br />
             {
                 (watchlistMedia !== undefined && watchlistMedia.length > 0) ? (
                     <>
@@ -57,7 +55,7 @@ const Dashboard = () => {
                     </Flickity>
                     </>
                 ) : (
-                    <div>Loading...</div>
+                    <></>
                 )
             }
         </div>
