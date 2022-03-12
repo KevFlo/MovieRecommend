@@ -1,0 +1,15 @@
+.stream-provider {
+    margin: 20px 0;
+}
+
+.stream-provider-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.stream-provider-logo {
+    max-width: 60px;
+    border-radius: 5px;
+}

@@ -33,7 +33,17 @@ const tmdb = {
         let data = await response.json();
         data = await data.results.filter(media => media.media_type === "movie" || media.media_type === "tv");
         return data;
-    }
+    },
+    getMovieStreamingProviders: async (id) => {
+        const response = await fetch(`https://api.themoviedb.org/3/movie/${id}/watch/providers?api_key=${APIKey}`);
+        let data = await response.json();
+        return await data.results;
+    },
+    getTVStreamingProviders: async (id) => {
+        const response = await fetch(`https://api.themoviedb.org/3/tv/${id}/watch/providers?api_key=${APIKey}`);
+        let data = await response.json();
+        return await data.results;
+    },
 };
 
 export default tmdb;

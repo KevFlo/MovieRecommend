@@ -3,6 +3,7 @@ import { useParams, useLocation } from "react-router-dom";
 import tmdb from "../utils/tmdb";
 import mediaUtil from "../utils/media";
 import watchlist from "../utils/watchlist";
+import StreamProvider from "./StreamProvider/StreamProvider";
 
 const Media = () => {
     const { id } = useParams();
@@ -11,6 +12,7 @@ const Media = () => {
     const [media, setMedia] = useState({});
     // const [videos, setVideos] = useState([]);
     const [inWatchlist, setInWatchlist] = useState(false);
+    const [watchProviders, setWatchProviders] = useState([]);
 
     useEffect(() => {
         tmdb.getMedia(media_type, id).then(data => {
@@ -20,6 +22,29 @@ const Media = () => {
         // tmdb.getMediaVideos(media_type, id).then(data => {
         //     setVideos(data);
         // });
+        if (media_type === "tv") {
+            tmdb.getTVStreamingProviders(id).then(data => {
+                const providers = data?.US?.flatrate;
+                if (providers) {
+                    if (providers.length > 3) {
+                        setWatchProviders(providers.slice(0, 3));
+                    } else {
+                        setWatchProviders(providers);
+                    }
+                }
+            });
+        } else {
+            tmdb.getMovieStreamingProviders(id).then(data => {
+                const providers = data?.US?.flatrate;
+                if (providers) {
+                    if (providers.length > 3) {
+                        setWatchProviders(providers.slice(0, 3));
+                    } else {
+                        setWatchProviders(providers);
+                    }
+                }
+            });
+        }
     }, [id, media_type]);
 
     useEffect(() => {
@@ -69,6 +94,9 @@ const Media = () => {
                     ))}
                 </div>
             </div> */}
+            { watchProviders && watchProviders.length > 0 ? (
+                <StreamProvider providers={watchProviders} />
+            ) : null }
         </div>
     )
 }
