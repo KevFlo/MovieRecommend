@@ -169,11 +169,7 @@ nav {
 	overflow: hidden;
 }
 
-.media-list-trending .media-list-block {
-	margin-right: 20px;
-}
-
-.media-list-trending .media-list-block img {
+.media-list-block img {
 	max-width: 200px;
 	height: auto;
 	border-radius: 8px;

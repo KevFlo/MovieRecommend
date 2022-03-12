@@ -1,0 +1,21 @@
+.slider {
+    white-space: nowrap;
+    overflow-y: hidden;
+    overflow-x: auto;
+    transform: translate3d(0,0,0);
+    text-align: left;
+    user-select: none;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.slider::-webkit-scrollbar {
+    display: none;
+}
+
+.slides-list {
+    white-space: nowrap;
+    display: inline-flex;
+    overflow: hidden;
+    gap: 20px;
+}

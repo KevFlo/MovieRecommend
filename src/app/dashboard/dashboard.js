@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import MediaListBlock from "../media/media-list-block";
+import Slider from "../components/slider";
 import tmdb from "../utils/tmdb";
 import watchlist from "../utils/watchlist";
-import Flickity from "react-flickity-component";
-import "../../flickity.css";
 
 const Dashboard = () => {
     const [mediaList, setMediaList] = useState({});
@@ -15,13 +14,6 @@ const Dashboard = () => {
         });
         setWatchlistMedia(watchlist.getWatchlist());
     }, []);
-    
-    const flickityOptions = {
-        freeScroll: true,
-        contain: true,
-        pageDots: false,
-        prevNextButtons: true,
-    };
 
     return (
         <div>
@@ -30,13 +22,13 @@ const Dashboard = () => {
                 (mediaList !== undefined && mediaList.length > 0) ? (
                     <>
                     <h2 className="text-left">Trending Now</h2>
-                    <Flickity options={flickityOptions} className="media-list-trending">
+                    <Slider>
                         {
                             mediaList.map(item => (
                                 <MediaListBlock key={item.id} item={item} />
                             ))
                         }
-                    </Flickity>
+                    </Slider>
                     </>
                 ) : (
                     <></>
@@ -46,13 +38,13 @@ const Dashboard = () => {
                 (watchlistMedia !== undefined && watchlistMedia.length > 0) ? (
                     <>
                     <h2 className="text-left">My Watchlist</h2>
-                    <Flickity options={flickityOptions} className="media-list-trending">
+                    <Slider>
                         {
                             watchlistMedia.map(item => (
                                 <MediaListBlock key={item.id} item={item} />
                             ))
                         }
-                    </Flickity>
+                    </Slider>
                     </>
                 ) : (
                     <></>
