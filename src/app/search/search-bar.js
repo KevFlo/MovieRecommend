@@ -22,7 +22,7 @@ const SearchBar = ({setResults, query, setQuery}) => {
     return (
         <div className="search__bar">
             <div className="search__form">
-                <input type="text" className="search__input" placeholder="Search" value={query} ref={input} onChange={handle_query_change} />
+                <input type="text" autoFocus="true" className="search__input" placeholder="Search" value={query} ref={input} onChange={handle_query_change} />
             </div>
         </div>
     );
